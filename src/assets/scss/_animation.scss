@@ -1,0 +1,293 @@
+@charset "UTF-8";
+//-----------------------------------------------------
+// animate.scss
+//-----------------------------------------------------
+%animation-basic {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+@mixin animation-fade($className: fade, $from: 0.815, $to: 1.185) {
+  .#{$className}-enter {
+    animation-name: fadeIn;
+    @extend %animation-basic;
+  }
+  .#{$className}-leave {
+    animation-name: fadeOut;
+    @extend %animation-basic;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale($from);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale($to);
+    }
+  }
+}
+
+@mixin animation-down($className: down, $value: 100%) {
+  .#{$className}-enter {
+    animation-name: downIn;
+    @extend %animation-basic;
+  }
+  .#{$className}-leave {
+    animation-name: downOut;
+    @extend %animation-basic;
+  }
+  @keyframes downIn {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, $value, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes downOut {
+    0% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(0, $value, 0);
+    }
+  }
+}
+
+@mixin animation-up($className: up, $value: -100%) {
+  .#{$className}-enter {
+    animation-name: upIn;
+    @extend %animation-basic;
+  }
+  .#{$className}-leave {
+    animation-name: upOut;
+    @extend %animation-basic;
+  }
+  @keyframes upIn {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, $value, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  @keyframes upOut {
+    0% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      opacity: 0;
+      transform: translate3d(0, $value, 0);
+    }
+  }
+}
+
+@keyframes transleftout {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  10% {
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-100%, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes transleftin {
+  0% {
+    transform: translate(-100%, 0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-100%, 0);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes transrightout {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  10% {
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(100%, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes transrightin {
+  0% {
+    transform: translate(100%, 0);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(100%, 0);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes aboveleave {
+  0% {
+    z-index: 100;
+    transform: translate(0, 0);
+  }
+  10% {
+    z-index: 100;
+    transform: translate(0, 0);
+  }
+  100% {
+    z-index: 100;
+    transform: translate(-100%, 0);
+  }
+}
+
+@keyframes abovein {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  10% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes showIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hideOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+//-----------页面切换类型--------
+.transleft-leave,
+.transrightback-leave {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  animation: transrightout .4s ease;
+}
+
+.transleft-enter,
+.transrightback-enter {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  animation: transleftin .4s ease;
+}
+
+.transright-leave,
+.transleftback-leave {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  animation: transleftout .4s ease;
+}
+
+.transright-enter,
+.transleftback-enter {
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  animation: transrightin .4s ease;
+}
+
+.aboveleave {
+  animation: aboveleave .4s ease;
+}
+
+.abovein {
+  animation: abovein .4s ease;
+}
+
+.fade-enter {
+  animation: showIn .4s ease;
+}
+
+.fade-leave {
+  animation: hideOut .4s ease;
+}
+
+//---scale-------
+@include animation-fade('scale');
+//---从上往下-------
+@include animation-up();
+//---从下往上-------
+@include animation-down();
+@keyframes loading {
+  0%,
+  100% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, .7), 1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2), 1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2), -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.5), -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.7);
+  }
+  12.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, .5), 1.8em -1.8em 0 0em rgba(0, 0, 0, .7), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2), 1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2), -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2), -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.5);
+  }
+  25% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.5), 1.8em -1.8em 0 0em rgba(0, 0, 0, .5), 2.5em 0em 0 0em rgba(0, 0, 0, .7), 1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2), -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2), -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  37.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2), 1.8em -1.8em 0 0em rgba(0, 0, 0, 0.5), 2.5em 0em 0 0em rgba(0, 0, 0, .5), 1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2), -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2), -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2), 1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.5), 1.75em 1.75em 0 0em rgba(0, 0, 0, .5), 0em 2.5em 0 0em rgba(0, 0, 0, .7), -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.2), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2), -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  62.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2), 1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2), 1.75em 1.75em 0 0em rgba(0, 0, 0, 0.5), 0em 2.5em 0 0em rgba(0, 0, 0, .5), -1.8em 1.8em 0 0em rgba(0, 0, 0, .7), -2.6em 0em 0 0em rgba(0, 0, 0, 0.2), -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2), 1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2), 1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.5), -1.8em 1.8em 0 0em rgba(0, 0, 0, .5), -2.6em 0em 0 0em rgba(0, 0, 0, .7), -1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2);
+  }
+  87.5% {
+    box-shadow: 0em -2.6em 0em 0em rgba(0, 0, 0, 0.2), 1.8em -1.8em 0 0em rgba(0, 0, 0, 0.2), 2.5em 0em 0 0em rgba(0, 0, 0, 0.2), 1.75em 1.75em 0 0em rgba(0, 0, 0, 0.2), 0em 2.5em 0 0em rgba(0, 0, 0, 0.2), -1.8em 1.8em 0 0em rgba(0, 0, 0, 0.5), -2.6em 0em 0 0em rgba(0, 0, 0, .5), -1.8em -1.8em 0 0em rgba(0, 0, 0, .7);
+  }
+}
