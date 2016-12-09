@@ -1,6 +1,6 @@
 # my-vue-project
 
-> 仿饿了吧移动端招聘网
+> 仿饿了么移动端招聘网 
 
 ## Build Setup
 
