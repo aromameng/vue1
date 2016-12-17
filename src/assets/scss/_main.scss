@@ -103,6 +103,9 @@
     color: #333;
     font-size: 16px;
     border-bottom: 1px solid #eee;
+    &.active{
+    	color:$primary;
+    }
 }
 .menu .v-link-active {
     color: #26a2ff;

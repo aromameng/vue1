@@ -4,7 +4,7 @@
       <img class="logo" v-if="showLogo" src="assets/img/logo.png" />
       <span class="back" @click="back" v-if="showBack">返回</span>
       <h1>{{$route.title}}</h1>
-      <div class="close" @click="clickMenu">
+      <div class="close" @click="clickMenu" v-if="showMenu">
         <span class="close-icon" v-bind:class="{'open':menu}"></span>
       </div>
     </header>
@@ -43,6 +43,9 @@ export default {
       },
       showLogo() {
         return !this.$route.wedgets || this.$route.wedgets.logo;
+      },
+      showMenu(){
+        return !this.$route.wedgets || this.$route.wedgets.menu;
       }
     },
     methods: {

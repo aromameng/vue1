@@ -12,23 +12,28 @@ export default {
       header: false,
       back: false, // 无后退按钮
       bottom: true, //底部导航是否显示
-      logo:true
+      logo:true,
+      menu:true
     }
   },
   '/about': {
     title: '关于我们',
     component: about,
+    name: 'about',
     wedgets: {
       back: true,
-      logo:false
+      logo:false,
+      menu:true
     }
   },
   '/news': {
+    name: 'news',
     component: news,
     title: '新闻中心',
     wedgets: {
       back: true,
-      logo:false
+      logo:false,
+      menu:true
     }
   },
   '/newsView/:index': {
@@ -37,7 +42,7 @@ export default {
     title: '新闻详情',
     wedgets: {
       back: true,
-      logo:false
+      logo:false     
     }
   }
 }
