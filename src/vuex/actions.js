@@ -3,3 +3,6 @@
 export const addCount = ({ dispatch }) => {
   dispatch('ADD_COUNT')
 }
+export const clickMenu = ({ dispatch }) => {
+  dispatch('CLICKMENU')
+}

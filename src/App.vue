@@ -4,29 +4,37 @@
       <img class="logo" v-if="showLogo" src="assets/img/logo.png" />
       <span class="back" @click="back" v-if="showBack">返回</span>
       <h1>{{$route.title}}</h1>
-      <div class="close" @click="menu">
-        <span class="close-icon" v-bind:class="{'open':isopen}"></span>
+      <div class="close" @click="clickMenu">
+        <span class="close-icon" v-bind:class="{'open':menu}"></span>
       </div>
     </header>
     <div class="container">
       <router-view class="view" v-ref:pageview keep-alive></router-view>
     </div>
     <!--动态组件-->
-    <component :is="currentView"></component>
+    <!-- <component :is="currentView"></component> -->
+    <menulist :is-show="menu"></menulist>
   </div>
 </template>
 <script>
 import store from './vuex/store.js'
-import menu from './components/menu.vue'
+import menulist from './components/menu.vue'
+
+import {
+  clickMenu
+} from './vuex/actions'
+import {
+  menu
+} from './vuex/getters'
+
 export default {
   data() {
       return {
-        isopen: false,
         currentView: '',
       }
     },
     components: {
-      menu
+      menulist
     },
     store: store, //在根组件加入 store，让它的子组件和 store 连接
     computed: {
@@ -40,17 +48,14 @@ export default {
     methods: {
       back: function() {
         history.back(-1);
-      },
-      menu: function() {
-        this.isopen = !this.isopen;
-        this.currentView = this.currentView.length > 0 ? '' : 'menu';
       }
     },
-    events: {
-      'open-menu': function(msg) {
-        // 事件回调内的 `this` 自动绑定到注册它的实例上
-        this.isopen = msg;
-        this.currentView = '';
+    vuex: {
+      actions: {
+        clickMenu
+      },
+      getters: {
+        menu
       }
     }
 }

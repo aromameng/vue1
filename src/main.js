@@ -5,7 +5,7 @@ var VueRouter = require('vue-router')
 import VueResource from 'vue-resource'
 
 /*引入js文件*/
-import Zepto from './assets/js/lib/zepto.min.js'
+//import Zepto from './assets/js/lib/zepto.min.js'
 import helper from './assets/js/util.js'
 
 /*注册*/
