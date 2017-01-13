@@ -12,8 +12,10 @@
   "dependencies": {
     "babel-runtime": "^6.0.0",
     "vue": "^1.0.21",
+    "vue-preview": "^1.0.5",
     "vue-resource": "^1.0.2",
-    "vuex": "^1.0.0"
+    "vuex": "^1.0.0",
+    "webpack-zepto": "0.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
@@ -48,7 +50,6 @@
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
-    "webpack-merge": "^0.8.3",
-    "zepto": "^1.2.0"
+    "webpack-merge": "^0.8.3"
   }
 }

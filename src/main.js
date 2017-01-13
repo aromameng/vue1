@@ -8,6 +8,9 @@ import VueResource from 'vue-resource'
 //import Zepto from './assets/js/lib/zepto.min.js'
 import helper from './assets/js/util.js'
 
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
 /*注册*/
 Vue.use(VueResource)
 Vue.use(VueRouter)

@@ -2,6 +2,7 @@ import home from '../modules/home.vue'
 import about from '../modules/about.vue'
 import news from '../modules/news.vue'
 import newsView from '../modules/newsView.vue'
+import test from '../modules/test.vue'
 
 export default {
 	'/home': {
@@ -42,7 +43,17 @@ export default {
     title: '新闻详情',
     wedgets: {
       back: true,
-      logo:false     
+      logo:false
+    }
+  },
+	'/test': {
+    name: 'test',
+    component: test,
+    title: '测试',
+    wedgets: {
+      back: true,
+      logo:false,
+			menu:true
     }
   }
 }

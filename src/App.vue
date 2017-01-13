@@ -51,7 +51,7 @@ export default {
     methods: {
       back: function() {
         history.back(-1);
-      }
+      },
     },
     vuex: {
       actions: {
